@@ -5,7 +5,7 @@ import re
 MVA_TABLE_PATH = "mva_table.csv"
 
 token_splitter = re.compile("[ \n]")
-token_re = re.compile(r"[.,]|[абвгджзеіїиклмнопрстухцчшщьюєяАБВГДЖЗЕІЇИКЛМНОПРСТУХЦЧШЩЬЮЄЯ0-9']+")
+token_re = re.compile(r"[.,;]|[абвгджзеіїиклмнопрстухцчшщьюєяАБВГДЖЗЕІЇИКЛМНОПРСТУХЦЧШЩЬЮЄЯ0-9']+")
 
 DEF_KWD = 0
 END_KWD = 1
@@ -16,7 +16,7 @@ IN_KWD = 5
 CONSOLE_KWD = 6
 CALL_KWD = 7
 
-def tokenizer(string, regex):
+def tokenizer(string, regex = token_re):
     tokens = []
     match = regex.search(string)
     while match != None:
