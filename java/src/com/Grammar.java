@@ -1,59 +1,59 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Grammar {
 
-    private HashMap<Character, ArrayList<String>> rules;
-    private HashSet<Character> terminals;
-    private char start;
-    private HashMap<String, HashMap<String, ? extends Collection<String>>> parseTable;
+    private HashMap<String, ArrayList<Token[]>> rules;
+    private Token start;
+    private HashMap<String, HashMap<String, Token[]>> parseTable;
+    private boolean changed = true;
 
     public Grammar() {
         this.rules = new HashMap<>();
-        this.terminals = new HashSet<>();
-    }
-    public Grammar(Collection<Character> terminals, char start){
-        this.start = start;
-        this.rules = new HashMap<>();
-        this.terminals = new HashSet<>(terminals);
-    }
-    public Grammar(HashSet<Character> terminals, char start, HashMap<Character, ArrayList<String>> rules) {
-        this.start = start;
-        this.rules = rules;
-        this.terminals = terminals;
+//        this.terminals = new HashSet<>();
     }
 
-    public boolean isTerminal(String word){
-        for (int i=0; i<word.length(); i++) {
-            if (!terminals.contains(word.charAt(i))) return false;
+    public Grammar(Token start, HashMap<String, ArrayList<Token[]>> rules) {
+        this.start = start;
+        this.rules = rules;
+//        this.terminals = terminals;
+    }
+
+    public Grammar(Token start){
+//        this.terminals = terminals.stream().map(Token::new).collect(Collectors.toSet());
+        this.start = start;
+        this.rules = new HashMap<>();
+    }
+
+    public static boolean isTerminal(Collection<Token> word){
+        for (Token token : word){
+            if (!token.terminal) return false;
         }
         return true;
     }
 
-    public HashMap<Character, String> firstReplacements(char testedVal){
-        HashMap<Character, String> out = new HashMap<>();
+    public HashMap<String, Token[]> firstReplacements(String testedVal){
+        HashMap<String, Token[]> out = new HashMap<>();
         if (!rules.containsKey(testedVal)) throw new SyntaxException("Got unresolved terminal " + testedVal);
-        for (String result : rules.get(testedVal)){
-            HashSet<Character> res = first(result);
-            for (char ch : res){
-                out.put(ch, result);
+        for (Token[] result : rules.get(testedVal)){
+            HashSet<Token> res = first(result);
+            for (Token ch : res){
+                out.put(ch.token, result);
             }
         }
         return out;
     }
 
-    public HashSet<Character> first(char testedVal) {
-        HashSet<Character> out = new HashSet<>();
-        if (terminals.contains(testedVal)) {
+    public HashSet<Token> first(Token testedVal) {
+        HashSet<Token> out = new HashSet<>();
+        if (testedVal.terminal) {
             out.add(testedVal);
             return out;
         }
-        if (!rules.containsKey(testedVal)) throw new SyntaxException("Got unresolved terminal " + testedVal);
-        for (String replacement : rules.get(testedVal)) {
-            if (replacement.length() == 0) {
-                out.add((char) 0);
+        if (!rules.containsKey(testedVal.token)) throw new SyntaxException("Got unresolved terminal " + testedVal.token);
+        for (Token[] replacement : rules.get(testedVal.token)) {
+            if (replacement.length == 0) {
+                out.add(Token.EPS);
                 continue;
             }
             out.addAll(first(replacement));
@@ -61,42 +61,56 @@ public class Grammar {
         return out;
     }
 
-    public void addRules(Character nonTerminal, String[] replacements) {
-        for (String replacement : replacements){
+    public void addRules(String nonTerminal, Token[][] replacements) {
+        for (Token[] replacement : replacements){
             addRule(nonTerminal, replacement);
         }
     }
 
-    public void addRule(Character nonTerminal, String replacement) {
+    public void addRule(String nonTerminal, Token[] replacement) {
+        changed = true;
         rules.putIfAbsent(nonTerminal, new ArrayList<>());
         rules.get(nonTerminal).add(replacement);
     }
 
-    public char getStart() {
+    public Token getStart() {
         return start;
     }
 
-    public void setStart(char start) {
+    public void setStart(Token start) {
         this.start = start;
     }
 
-    public HashSet<Character> getTerminals() {
-        return terminals;
+    public HashMap<String, HashMap<String, Token[]>> getParseTable(){
+        if (parseTable == null){
+            parseTable = new HashMap<>();
+        }
+        if (changed){
+            for (String nonTerminal : rules.keySet()){
+                parseTable.put(nonTerminal, firstReplacements(nonTerminal));
+            }
+            changed = false;
+        }
+        return parseTable;
     }
 
-    private HashSet<Character> first(String word){
-        HashSet<Character> out = new HashSet<>();
-        if (word.isEmpty()) {
-            out.add((char) 0);
+//    public Set<Token> getTerminals() {
+//        return terminals;
+//    }
+
+    private HashSet<Token> first(Token[] word){
+        HashSet<Token> out = new HashSet<>();
+        if (word.length == 0) {
+            out.add(Token.EPS);
             return out;
         }
         int i = 0;
-        HashSet<Character> result = new HashSet<>();
+        HashSet<Token> result = new HashSet<>();
         while (true){
-            if (i >= word.length()) break;
-            result.remove((char) 0);
-            result.addAll(first(word.charAt(i)));
-            if (result.contains((char) 0)) {
+            if (i >= word.length) break;
+            result.remove(Token.EPS);
+            result.addAll(first(word[i]));
+            if (result.contains(Token.EPS)) {
                 i++;
             } else {
                 break;
@@ -106,51 +120,4 @@ public class Grammar {
         return out;
     }
 
-    public HashMap<Character, String> lastReplacements(char testedVal) {
-        HashMap<Character, String> out = new HashMap<>();
-        if (!rules.containsKey(testedVal)) throw new SyntaxException("Got unresolved terminal " + testedVal);
-        for (String result : rules.get(testedVal)){
-            HashSet<Character> res = last(result);
-            for (char ch : res){
-                out.put(ch, result);
-            }
-        }
-        return out;
-    }
-
-    public HashSet<Character> last(String word){
-        HashSet<Character> out = new HashSet<>();
-        if (word.isEmpty()) {
-            out.add((char) 0);
-            return out;
-        }
-        int i = word.length()-1;
-        while (i>=0){
-            out.remove((char) 0);
-            out.addAll(last(word.charAt(i)));
-            if (out.contains((char) 0)) {
-                i--;
-            } else {
-                break;
-            }
-        }
-        return out;
-    }
-
-    public HashSet<Character> last(char ch){
-        HashSet<Character> out = new HashSet<>();
-        if (terminals.contains(ch)) {
-            out.add(ch);
-            return out;
-        }
-        if (!rules.containsKey(ch)) throw new SyntaxException("Got unresolved terminal " + ch);
-        for (String replacement : rules.get(ch)) {
-            if (replacement.length() == 0) {
-                out.add((char) 0);
-                continue;
-            }
-            out.addAll(last(replacement));
-        }
-        return out;
-    }
 }
