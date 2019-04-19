@@ -1,5 +1,8 @@
-import java.awt.image.ImagingOpException;
-import java.io.*;
+package lex;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,7 +14,10 @@ public class LexicalAnalyzer {
 
     static {
         RESERVED.addAll(Arrays.asList(
-                "оголошуємо", "оголосимо", "функцію", "операцію", ",", ".", ";", "що", "яка", "повертає"
+                "оголошуємо", "оголосимо", "функцію", "операцію", ",", ".", ";", ":",  "що", "яка", "повертає", "число",
+                "виводимо", "вивести", "у", "до", "консоль", "консолі", "результат", "функції", "операції", "над",
+                "змінними", "змінною", "та", "і", "виводить", "вивести", "викликає", "викликаємо", "викличемо","сумму",
+                "сумма","значення","змінної","значенням"
         ));
     }
 
@@ -74,6 +80,10 @@ public class LexicalAnalyzer {
 
 
     public static void main(String[] args){
-        convert("Оголошуємо функцію, що повертає 76 примітка: це коментар\n");
+        try {
+            convert(new File("/Users/user/Documents/Development/ukr.mva/programm1.mva"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

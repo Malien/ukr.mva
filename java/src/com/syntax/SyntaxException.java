@@ -1,3 +1,5 @@
+package syntax;
+
 public class SyntaxException extends RuntimeException {
 
     public SyntaxException() {

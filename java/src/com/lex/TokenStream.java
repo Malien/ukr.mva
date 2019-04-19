@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+package lex;
 
 public class TokenStream {
 

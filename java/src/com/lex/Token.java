@@ -1,3 +1,5 @@
+package lex;
+
 import java.util.Objects;
 
 public class Token {
