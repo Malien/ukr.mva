@@ -1,5 +1,6 @@
 package syntax;
 
+import lang.Program;
 import lex.LexicalAnalyzer;
 import lex.Token;
 import lex.TokenStream;
@@ -24,19 +25,12 @@ public class Parser {
     }
 
     public static void main(String[] args){
-//        lex.Token start = new lex.Token("Start", false);
-//        lex.Token a     = new lex.Token("a",      true);
-//        lex.Token b     = new lex.Token("b",      true);
-//        lex.Token E     = new lex.Token("E",     false);
-//        lex.Token B     = new lex.Token("B",     false);
-//        syntax.Grammar gram = new syntax.Grammar(start);
-//        gram.addRules("Start", new lex.Token[][]{{a, E},{B}});
-//        gram.addRules("B",     new lex.Token[][]{{b}   ,{lex.Token.EPS}});
-//        gram.addRules("E",     new lex.Token[][]{{B}   ,{a,B}});
-
         TokenStream tokenStream = LexicalAnalyzer.convert("Оголошуємо функцію а над змінними ікс та ігрик, що повертає сумму значення змінної а та значення змінної б. викличемо операцію а. Оголосимо операцію б над змінною р, що: виводить до консолі результат операції а над значенням змінної б та 5, повертає сумму значення змінної б та 7.");
 
         NaryTree<Token> parseTree = MVA.parseTree(tokenStream);
+
+        Program program = new Program(parseTree);
+
         System.out.println(parseTree);
     }
 
@@ -55,6 +49,9 @@ public class Parser {
             System.out.println("parsing: " + current + " -> " + node.value);
             if (node.value == Token.EPS) continue;
             if (node.value.equals(current)){
+                if (node.value.token.equals("id") || node.value.token.equals("number") || node.value.token.equals("string")){
+                    node.value = current;
+                }
                 stream.pop();
             } else {
                 if (!parseTable.containsKey(node.value.token)) {

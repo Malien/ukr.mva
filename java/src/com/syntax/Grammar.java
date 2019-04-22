@@ -17,8 +17,10 @@ public class Grammar {
         Token statement  = new Token("statement", false);
         Token expression = new Token("expression", false);
 
-        Token id        = new Token("id");
-        Token number    = new Token("number");
+        Token id     = new Token("id");
+        Token number = new Token("number");
+        Token string = new Token ("string");
+
         Token dot       = new Token(".");
         Token comma     = new Token(",");
         Token dotcomma  = new Token(";");
@@ -135,7 +137,8 @@ public class Grammar {
                 {EVar},
                 {ECall},
                 {ESum},
-                {number}
+                {number},
+                {string}
         });
         MVA.addRules("e-var", new Token[][]{
                 {new Token("значення"), new Token("змінної"), id},

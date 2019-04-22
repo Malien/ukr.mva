@@ -8,7 +8,7 @@ public class Token {
 
     public boolean terminal;
     public String token;
-    private String container;
+    public String container;
 
     public Token(boolean terminal, String token, String container) {
         this.terminal = terminal;
