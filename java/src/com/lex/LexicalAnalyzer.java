@@ -65,7 +65,7 @@ public class LexicalAnalyzer {
             else formed.add(new Token(true, "id", str));
         }
 
-        formed.forEach(System.out::println);
+//        formed.forEach(System.out::println);
 
         return new TokenStream(formed.toArray(new Token[0]));
     }

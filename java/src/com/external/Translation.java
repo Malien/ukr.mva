@@ -4,6 +4,7 @@ import lang.Program;
 import lex.LexicalAnalyzer;
 import lex.Token;
 import lex.TokenStream;
+import syntax.SyntaxException;
 import tree.NaryTree;
 
 import java.io.File;
@@ -43,7 +44,10 @@ public class Translation {
             out.close();
         } catch (IOException ex){
             ex.printStackTrace();
+        } catch (SyntaxException ex){
+            System.err.println(ex.getLocalizedMessage());
+        } catch (RuntimeException ex){
+            System.err.println(ex.getMessage());
         }
     }
-
 }
