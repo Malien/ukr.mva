@@ -1,7 +1,5 @@
 package syntax;
 
-import lang.Program;
-import lex.LexicalAnalyzer;
 import lex.Token;
 import lex.TokenStream;
 import tree.NaryTree;
@@ -22,16 +20,6 @@ public class Parser {
 
     public Parser(Grammar grammar){
         this.grammar = grammar;
-    }
-
-    public static void main(String[] args){
-        TokenStream tokenStream = LexicalAnalyzer.convert("Оголошуємо функцію а над змінними ікс та ігрик, що повертає сумму значення змінної а та значення змінної б. викличемо операцію а. Оголосимо операцію б над змінною р, що: виводить до консолі результат операції а над значенням змінної б та 5, повертає сумму значення змінної б та 7.");
-
-        NaryTree<Token> parseTree = MVA.parseTree(tokenStream);
-
-        Program program = new Program(parseTree);
-
-        System.out.println(parseTree);
     }
 
     public NaryTree<Token> parseTree(TokenStream stream) throws SyntaxException {

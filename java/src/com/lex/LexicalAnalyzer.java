@@ -77,13 +77,4 @@ public class LexicalAnalyzer {
         fis.close();
         return convert(new String(data, StandardCharsets.UTF_8));
     }
-
-
-    public static void main(String[] args){
-        try {
-            convert(new File("/Users/user/Documents/Development/ukr.mva/programm1.mva"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
