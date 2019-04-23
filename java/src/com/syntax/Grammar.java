@@ -113,7 +113,8 @@ public class Grammar {
         MVA.addRule("s-assign", new Token[]{to, new Token("змінної"), id, new Token("внести"), expression});
         MVA.addRules("s-print", new Token[][] {
                 {new Token("вивести"), SPrintConsole, expression},
-                {new Token("виводить"), SPrintConsole, expression}
+                {new Token("виводить"), SPrintConsole, expression},
+                {new Token("виводимо"), SPrintConsole, expression}
         });
         MVA.addRules("s-print-console", new Token[][] {
                 {to, new Token("консолі")},

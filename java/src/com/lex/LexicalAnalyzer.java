@@ -29,7 +29,7 @@ public class LexicalAnalyzer {
         return true;
     }
 
-    public static TokenStream convert(String input) {
+    public static TokenStream convert(String input, boolean verbose) {
         String[] split = input.split("(?=[,.:;\"\\\\/*!\\s\n])|(?<=[,.:;\"\\\\/*!\\s\n])");
         LinkedList<Token> formed = new LinkedList<>();
 
@@ -65,16 +65,16 @@ public class LexicalAnalyzer {
             else formed.add(new Token(true, "id", str));
         }
 
-//        formed.forEach(System.out::println);
+        if (verbose) formed.forEach(System.out::println);
 
         return new TokenStream(formed.toArray(new Token[0]));
     }
 
-    public static TokenStream convert(File file) throws IOException {
+    public static TokenStream convert(File file, boolean verbose) throws IOException {
         FileInputStream fis = new FileInputStream(file);
         byte[] data = new byte[(int) file.length()];
         fis.read(data);
         fis.close();
-        return convert(new String(data, StandardCharsets.UTF_8));
+        return convert(new String(data, StandardCharsets.UTF_8), verbose);
     }
 }

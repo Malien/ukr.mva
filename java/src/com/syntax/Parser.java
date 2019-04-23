@@ -22,7 +22,7 @@ public class Parser {
         this.grammar = grammar;
     }
 
-    public NaryTree<Token> parseTree(TokenStream stream) throws SyntaxException {
+    public NaryTree<Token> parseTree(TokenStream stream, boolean verbose) throws SyntaxException {
         Stack<NaryTreeNode<Token>> parsed = new Stack<>();
         HashMap<String, HashMap<String, Token[]>> parseTable = grammar.getParseTable();
 
@@ -34,7 +34,7 @@ public class Parser {
         while (!parsed.empty()){
             NaryTreeNode<Token> node = parsed.pop();
             Token current = stream.peek();
-//            System.out.println("parsing: " + current + " -> " + node.value);
+            if (verbose) System.out.println("parsing: " + current + " -> " + node.value);
             if (node.value == Token.EPS) continue;
             if (node.value.equals(current)){
                 if (node.value.token.equals("id") || node.value.token.equals("number") || node.value.token.equals("string")){
