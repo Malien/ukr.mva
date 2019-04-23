@@ -8,9 +8,6 @@ import java.util.Optional;
 
 public class PythonConverter implements Translator{
     private static final PythonConverter instance = new PythonConverter();
-    static {
-        Translation.registerTranslator("python", instance);
-    }
 
     private PythonConverter(){}
 
