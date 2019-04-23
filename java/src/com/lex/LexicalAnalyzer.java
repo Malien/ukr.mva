@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -33,6 +34,8 @@ public class LexicalAnalyzer {
         String[] split = input.split("(?=[,.:;\"\\\\/*!\\s\n])|(?<=[,.:;\"\\\\/*!\\s\n])");
         LinkedList<Token> formed = new LinkedList<>();
 
+        HashMap<String, String> obfuscationTable = new HashMap<>();
+        int idCount = 0;
         StringBuilder buffer = null;
         boolean comment = false;
         for (String str : split){
@@ -49,9 +52,9 @@ public class LexicalAnalyzer {
                 buffer.append(str);
                 continue;
             }
-            str = str.toLowerCase();
-            if (str.equals("примітка")) comment = true;
-            if (str.equals("\n")) {
+            String lowercase = str.toLowerCase();
+            if (lowercase.equals("примітка")) comment = true;
+            if (lowercase.equals("\n")) {
                 comment = false;
                 continue;
             }
@@ -61,8 +64,13 @@ public class LexicalAnalyzer {
                 formed.add(new Token(true, "number", str));
                 continue;
             }
-            if (RESERVED.contains(str)) formed.add(new Token(str));
-            else formed.add(new Token(true, "id", str));
+            if (RESERVED.contains(lowercase)) formed.add(new Token(lowercase));
+            else {
+                if (!obfuscationTable.containsKey(str)) {
+                    obfuscationTable.put(str, "i" + idCount++);
+                }
+                formed.add(new Token(true, "id", obfuscationTable.get(str)));
+            }
         }
 
         if (verbose) formed.forEach(System.out::println);

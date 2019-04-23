@@ -1,0 +1,3 @@
+./mvac $1 out.py
+python3 out.py
+rm out.py
