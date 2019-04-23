@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7668c06a-3146-4566-8e63-5b9599de037a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/external/Builder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/external/TranslationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/external/Translator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/lang/StructuringException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/external/ConsoleArguments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/external/Translation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/external/PythonConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/external/PythonConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lang/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lang/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lex/LexicalAnalyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lex/LexicalAnalyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/syntax/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/syntax/Parser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,21 +31,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/external/PythonConverter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
+            <state relative-caret-position="187">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3612#3613#0" expanded="true" />
+                <element signature="e#3643#3644#0" expanded="true" />
                 <element signature="e#192#193#0" expanded="true" />
                 <element signature="e#219#220#0" expanded="true" />
                 <element signature="e#280#281#0" expanded="true" />
                 <element signature="e#307#308#0" expanded="true" />
                 <element signature="e#3532#3533#0" expanded="true" />
                 <element signature="e#3559#3560#0" expanded="true" />
-                <element signature="e#3612#3613#0" expanded="true" />
-                <element signature="e#3643#3644#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/external/Translation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="40" column="94" selection-start-line="40" selection-start-column="94" selection-end-line="40" selection-end-column="94" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#462#463#0" expanded="true" />
+                <element signature="e#511#512#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/external/ConsoleArguments.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#922#923#0" expanded="true" />
+                <element signature="e#984#985#0" expanded="true" />
+                <element signature="e#1048#1049#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,7 +109,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/external/Builder.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="543">
-              <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+              <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -155,9 +179,18 @@
         <option value="$PROJECT_DIR$/src/com/external/Translator.java" />
         <option value="$PROJECT_DIR$/src/com/lang/Program.java" />
         <option value="$PROJECT_DIR$/src/com/external/Builder.java" />
+        <option value="$PROJECT_DIR$/src/com/external/Translators.java" />
         <option value="$PROJECT_DIR$/src/com/external/PythonConverter.java" />
+        <option value="$PROJECT_DIR$/src/com/external/ConsoleArguments.java" />
+        <option value="$PROJECT_DIR$/src/com/external/Translation.java" />
       </list>
     </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
@@ -242,7 +275,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -320,7 +353,7 @@
       <workItem from="1555649167792" duration="2189000" />
       <workItem from="1555655795470" duration="7292000" />
       <workItem from="1555681307515" duration="6431000" />
-      <workItem from="1555935141432" duration="13376000" />
+      <workItem from="1555935141432" duration="15907000" />
     </task>
     <task id="LOCAL-00001" summary="Finilized LL1 parser and lexical analyzer">
       <created>1555577515235</created>
@@ -343,11 +376,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555956046494</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented translation mechanism. Written mva to python translator">
+      <created>1556028999558</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556028999595</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51568000" />
+    <option name="totallyTimeSpent" value="54099000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -362,7 +402,7 @@
     <frame x="0" y="23" width="1440" height="805" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19527897" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19527897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -383,7 +423,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.3297568" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
@@ -398,7 +438,8 @@
     <MESSAGE value="Implementation of fully functional mva programming language grammar.&#10;I'll be it, a little lacking on the lang features.&#10;Started working on lang structures such that should be formed &#10;from the parse tree" />
     <MESSAGE value="Implementation of fully functional mva programming language grammar.&#10;I'll be it, a little lacking on the lang features.&#10;Started working on lang structures such that should be formed &#10;A bit of structuring work&#10;from the parse tree" />
     <MESSAGE value="Purified mva parse tree into a higher-level language constructs such as &#10;functions statements or expressions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Purified mva parse tree into a higher-level language constructs such as &#10;functions statements or expressions" />
+    <MESSAGE value="Implemented translation mechanism. Written mva to python translator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented translation mechanism. Written mva to python translator" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -636,7 +677,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/external/Builder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="543">
-          <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -653,20 +694,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/external/Translators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/external/PythonConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="142" column="33" lean-forward="true" selection-start-line="142" selection-start-column="33" selection-end-line="142" selection-end-column="33" />
+        <state relative-caret-position="187">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3612#3613#0" expanded="true" />
+            <element signature="e#3643#3644#0" expanded="true" />
             <element signature="e#192#193#0" expanded="true" />
             <element signature="e#219#220#0" expanded="true" />
             <element signature="e#280#281#0" expanded="true" />
             <element signature="e#307#308#0" expanded="true" />
             <element signature="e#3532#3533#0" expanded="true" />
             <element signature="e#3559#3560#0" expanded="true" />
-            <element signature="e#3612#3613#0" expanded="true" />
-            <element signature="e#3643#3644#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/external/ConsoleArguments.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#922#923#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+            <element signature="e#1048#1049#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/external/Translation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="40" column="94" selection-start-line="40" selection-start-column="94" selection-end-line="40" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#511#512#0" expanded="true" />
           </folding>
         </state>
       </provider>

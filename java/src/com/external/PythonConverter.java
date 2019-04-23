@@ -2,46 +2,20 @@ package external;
 
 import lang.Expression;
 import lang.Function;
-import lang.Program;
 import lang.Statement;
-import lex.LexicalAnalyzer;
-import lex.Token;
-import lex.TokenStream;
-import tree.NaryTree;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Optional;
-
-import static syntax.Parser.MVA;
 
 public class PythonConverter implements Translator{
     private static final PythonConverter instance = new PythonConverter();
+    static {
+        Translation.registerTranslator("python", instance);
+    }
 
     private PythonConverter(){}
 
     public static Translator getInstance() {
         return instance;
-    }
-
-    public static void main(String[] args){
-        if (args.length != 2){
-            throw new RuntimeException("Wrong argument count");
-        }
-        //TokenStream tokenStream = LexicalAnalyzer.convert("Оголошуємо функцію а над змінними ікс та ігрик, що повертає сумму значення змінної iкс та значення змінної ігрик. викличемо операцію а над 5 і 7. Оголосимо операцію б над змінною р, що: виводить до консолі результат операції а над значенням змінної р та 5, повертає сумму значення змінної р та 7.");
-        try {
-            TokenStream tokenStream = LexicalAnalyzer.convert(new File(args[0]));
-
-            NaryTree<Token> parseTree = MVA.parseTree(tokenStream);
-            Program program = new Program(parseTree);
-
-            FileWriter out = new FileWriter(args[1]);
-            Builder.build(program, getInstance(), out);
-            out.close();
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
     }
 
     @Override
